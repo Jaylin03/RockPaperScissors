@@ -12,7 +12,16 @@ def play(rounds):
     compMove = moves[random.randint(0,2)]
     
     #user move
-    userPick = int(input("\n1: Rock\n2: Paper\n3: Scissors\nPick your move (Enter a number): "))
+    try:
+      userPick = int(input("\n1: Rock\n2: Paper\n3: Scissors\nPick your move (Enter a number): "))
+    except:
+      print("Invalid response. Try again.")
+      userPick = int(input("\n1: Rock\n2: Paper\n3: Scissors\nPick your move (Enter a number): "))
+
+    if (userPick < 1 or userPick > 3):
+      print("Invalid response. Try again.")
+      userPick = int(input("\n1: Rock\n2: Paper\n3: Scissors\nPick your move (Enter a number): "))
+      
     userMove = moves[userPick-1]
 
     print ("\nRound " + str(x+1) + ": " + str(userMove) + " vs " + compMove)
@@ -42,8 +51,14 @@ def play(rounds):
 again = "yes"
 
 while (again == "yes"):
-  rounds = int(input("How many rounds would you like to play? Enter a whole number: "))
+  try:
+    rounds = int(input("How many rounds would you like to play? Enter a whole number: "))
+  except:
+    print("Invalid response. Try again.")
+    rounds = int(input("How many rounds would you like to play? Enter a whole number: "))
+    
   play(rounds)
 
-  again = input("\nWould you like to play again? Enter \"yes\" or \"no\": ")
+  againResponse = input("\nWould you like to play again? Enter \"yes\" or \"no\": ")
+  again = againResponse.strip().lower()
 print("Thank you for playing!")
