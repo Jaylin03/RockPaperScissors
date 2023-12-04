@@ -14,13 +14,13 @@ def play(rounds):
     #user move
     try:
       userPick = int(input("\n1: Rock\n2: Paper\n3: Scissors\nPick your move (Enter a number): "))
+      if (userPick < 1 or userPick > 3):
+        print("Invalid response. Try again.")
+        continue
     except:
       print("Invalid response. Try again.")
-      userPick = int(input("\n1: Rock\n2: Paper\n3: Scissors\nPick your move (Enter a number): "))
+      continue
 
-    if (userPick < 1 or userPick > 3):
-      print("Invalid response. Try again.")
-      userPick = int(input("\n1: Rock\n2: Paper\n3: Scissors\nPick your move (Enter a number): "))
       
     userMove = moves[userPick-1]
 
@@ -55,7 +55,7 @@ while (again == "yes"):
     rounds = int(input("How many rounds would you like to play? Enter a whole number: "))
   except:
     print("Invalid response. Try again.")
-    rounds = int(input("How many rounds would you like to play? Enter a whole number: "))
+    continue
     
   play(rounds)
 
